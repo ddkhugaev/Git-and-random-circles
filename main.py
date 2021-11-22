@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtGui import QPainter, QBrush, QPen
+from PyQt5.QtGui import QPainter, QBrush
 from PyQt5.QtCore import Qt
 from ui import Ui_MainWindow
 import random
@@ -15,9 +15,9 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 
     def paintEvent(self, event):
         n = random.randrange(10, 300)
+        colors = [Qt.red, Qt.yellow, Qt.green, Qt.blue]
         painter = QPainter(self)
-        painter.setPen(QPen(Qt.yellow, 8, Qt.SolidLine))
-        painter.setBrush(QBrush(Qt.yellow, Qt.SolidPattern))
+        painter.setBrush(QBrush(random.choice(colors), Qt.SolidPattern))
         painter.drawEllipse(10, 10, n, n)
 
     def update_draw(self):
